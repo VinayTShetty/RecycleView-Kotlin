@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() ,MyRecycleViewAdapter.MyItemClickListne
     }
 
     override fun myItemClicked(poisition: Int) {
-//        Toast.makeText(this, "ItemClicked ${poisition}", Toast.LENGTH_SHORT).show()
+       Toast.makeText(this, "Test Item in ItemClicked  ${poisition}", Toast.LENGTH_SHORT).show()
         Log.d("Mandira", "myItemClicked: ${poisition}")
     }
 }
