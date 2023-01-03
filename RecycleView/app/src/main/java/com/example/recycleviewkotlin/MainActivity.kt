@@ -2,12 +2,14 @@ package com.example.recycleviewkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recycleviewkotlin.Adapter.MyRecycleViewAdapter
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() ,MyRecycleViewAdapter.MyItemClickListner{
 
     val datalist=ArrayList<ItemsViewModel>()
 
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
          *   3)Set adapter for RecycleView.
          */
         val recyclerView:RecyclerView=findViewById(R.id.recycleView_main)
-        val myRecycleViewAdapter:MyRecycleViewAdapter=MyRecycleViewAdapter(datalist)
+        val myRecycleViewAdapter:MyRecycleViewAdapter=MyRecycleViewAdapter(datalist,this)
         recyclerView.layoutManager=LinearLayoutManager(this)
         recyclerView.adapter=myRecycleViewAdapter
 
@@ -42,5 +44,10 @@ class MainActivity : AppCompatActivity() {
         datalist.add(ItemsViewModel(R.drawable.ic_baseline_unsubscribe_24,"Unsubscribe",5))
         datalist.add(ItemsViewModel(R.drawable.ic_baseline_thumb_up_24,"Like",6))
         datalist.add(ItemsViewModel(R.drawable.ic_baseline_thumb_down_24,"UnLike",7))
+    }
+
+    override fun myItemClicked(poisition: Int) {
+//        Toast.makeText(this, "ItemClicked ${poisition}", Toast.LENGTH_SHORT).show()
+        Log.d("Mandira", "myItemClicked: ${poisition}")
     }
 }
